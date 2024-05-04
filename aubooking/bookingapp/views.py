@@ -20,7 +20,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class RoomViewSet(viewsets.ModelViewSet):
-    queryset = Room.objedts.all()
+    queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
 

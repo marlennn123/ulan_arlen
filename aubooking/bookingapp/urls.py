@@ -10,12 +10,8 @@ urlpatterns = [
     path('comment/<int:pk', CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='comment_detail'),
 
     path('roomViewSet/', RoomViewSet.as_view({'get': 'list', 'post': 'create'}), name='room_list'),
-    path('roomViewSet/<int:pk', RoomViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}),
-         name='room_detail'),
+    path('roomViewSet/<int:pk', RoomViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='room_detail'),
 
     path('booking/', BookingViewSer.as_view({'get': 'list', 'post': 'create'}), name='booking_list'),
-    path('booking/<int:pk', BookingViewSer.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}),
-         name='booking_detail'),
-
-
+    path('booking/<int:pk', BookingViewSer.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='booking_detail'),
 ]
