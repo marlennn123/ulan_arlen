@@ -1,5 +1,6 @@
-from models import *
+from .models import *
 from rest_framework import serializers
+from django.db.models import Avg
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -9,9 +10,15 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class HotelSerializer(serializers.ModelSerializer):
+    rating = serializers.SerializerMethodField()
+
     class Meta:
         model = Hotel
-        fields = '__all__'
+        fields = ['name', 'description', 'address', 'city', 'country', 'rating']
+
+    def get_rating(self, obj):
+        rating = obj.comment.aggregate(Avg('grade'))['grade__avg']
+        return rating if rating is not None else 0
 
 
 class CommentSerializer(serializers.ModelSerializer):
