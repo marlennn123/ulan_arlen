@@ -13,11 +13,11 @@ class UserProfile(models.Model):
 
 
 class Hotel(models.Model):
-    name = models.CharField(40)
-    description = models.TextField()
-    address = models.CharField(40)
-    city = models.CharField(30)
-    country = models.CharField(30)
+    name = models.CharField(max_length=40, verbose_name="name")
+    description = models.TextField(verbose_name="description")
+    address = models.CharField(max_length=40, verbose_name="address")
+    city = models.CharField(max_length=40, verbose_name="city")
+    country = models.CharField(max_length=40, verbose_name="country")
 
 
 class Comment(models.Model):
@@ -39,6 +39,8 @@ class Room(models.Model):
     room_number = models.ImageField()
     capacity = models.CharField(max_length=40)
     price_per_night = models.IntegerField()
+    active = models.BooleanField(null=True)
+
 
 
 class Booking(models.Model):
